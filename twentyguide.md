@@ -65,4 +65,21 @@ We'll be using **SSH** for all our **use-cases**, however, as an alternative you
 
 To clone the repo all you need to do is follow these clicks:
 ![image](https://github.com/user-attachments/assets/86bbab9f-cefa-4291-bcb4-f38f546285c6)
+Yay! Here are the final steps to get **TwentyCRM** in your local setup...
+![image](https://github.com/user-attachments/assets/80c5633e-a4a3-4265-930e-56bc65f19c8e)
+In the above steps, we've navigated to the repositories where you want the Twenty project folder to be created. It does not mean you're going to get the files in that folder, there will be a separate folder created.
+
+And,
+
+- Run : `git clone git@github.com:twentyhq/twenty.git`
+![image](https://github.com/user-attachments/assets/b1bf2959-27c6-4401-8955-49d0df719c31)
+
+- Run : `cd twenty`, this will take you to the project's root (the parentest folder present in the setup)
+![image](https://github.com/user-attachments/assets/4f68cbba-09e3-4c76-8a60-13ee022b67eb)
+
+If you see the circled name `twenty` like this in your terminal, Congratulations! You have the base setup 🎉.
+> If you're using any terminal other than the `Win-11` one, you might have a different look but the basics remain the same.
+
+Confirm the files with a simple command - `dir` on **Windows**, `ls` on **Mac/Linux**
+![image](https://github.com/user-attachments/assets/68fe19c7-6df8-4f46-924c-c055bc279b54)
 
