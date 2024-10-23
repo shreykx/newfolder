@@ -31,7 +31,8 @@ This document serves as a resource for setting up your **Big Twenty Localhost Pr
 
 - **Terminal**: Access to a terminal or command line tool.  
   [Using the Terminal on Windows](https://docs.microsoft.com/en-us/windows/terminal/) | [Mac Terminal Guide](https://support.apple.com/guide/terminal/welcome/mac)
-
+- **Docker**: Containerizing application.
+  [Docker](https://www.docker.com/)
 - **Basic Knowledge**: Understanding of Git, CLI commands, and JavaScript.  
   [Git Documentation](https://git-scm.com/doc) | [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
@@ -51,13 +52,14 @@ This document serves as a resource for setting up your **Big Twenty Localhost Pr
   
 - **Understanding of JavaScript**: Since most of twenty is written in **Typescript (Javascript with types)**.  
   [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-
+  
+- **Following skills** - Pay attention to the details.
 ### Estimated time
 A streamlined workflow of this type could take **~10 minutes** for the first time.
 
 ## Steps
 
-### Clone the official **[Twenty Github Repo](https://github.com/twentyhq/twenty/)**.
+### 1) Clone the official **[Twenty Github Repo](https://github.com/twentyhq/twenty/)**.
 Here's what the repo looks like as per **22-10-2024**
 ![image](https://github.com/user-attachments/assets/e1b179a7-397d-4938-9046-699bc02bcb89)
 
@@ -71,10 +73,11 @@ In the above steps, we've navigated to the repositories where you want the Twent
 
 And,
 
-- Run : `git clone git@github.com:twentyhq/twenty.git`
+- Run: `git clone git@github.com:twentyhq/twenty.git`
 ![image](https://github.com/user-attachments/assets/b1bf2959-27c6-4401-8955-49d0df719c31)
+It took me approx. 10 seconds to get the whole clone ready, time may vary as per your machine's specs, so don't panic.
 
-- Run : `cd twenty`, this will take you to the project's root (the parentest folder present in the setup)
+- Run: `cd twenty`, this will take you to the project's root (the parentest folder present in the setup)
 ![image](https://github.com/user-attachments/assets/4f68cbba-09e3-4c76-8a60-13ee022b67eb)
 
 If you see the circled name `twenty` like this in your terminal, Congratulations! You have the base setup 🎉.
@@ -83,3 +86,48 @@ If you see the circled name `twenty` like this in your terminal, Congratulations
 Confirm the files with a simple command - `dir` on **Windows**, `ls` on **Mac/Linux**
 ![image](https://github.com/user-attachments/assets/68fe19c7-6df8-4f46-924c-c055bc279b54)
 
+### 2) Open up the project in your favorite Editor.
+You can open your project in your favorite editor. I'm a Cursor user, so I'll type the command `cursor .` in the `root dir` to open it.
+
+![image](https://github.com/user-attachments/assets/99a8917b-08a7-468e-92c7-522343281c3d)
+Here's how it looks on my machine!
+
+### 3) Setting Postgres inside WSL (for Windows machines, OPTIONAL)
+This is going to set up Postgres from scratch in your WSL, however, an easier way of just retrieving the **DOCKER** image locally is better for many users.
+
+Well, just giving you an overview, WSL stands for `Windows Subsystem for Linux`, making a Linux environment, in your Windows machine! We use it for ease of development as Linux is the default system developers could rely on. If you're on Mac, the steps for setting this up would vary. Linux users, stay chill, you need not do anything, just start with the commands.
+I opened the Cursor-integrated terminal and WSLed via it.
+![image](https://github.com/user-attachments/assets/cf53a72a-480f-4e87-b7f6-e84540aa6ce8)
+
+**Resource : [Setup Postgres on WSL](https://harshityadav95.medium.com/postgresql-in-windows-subsystem-for-linux-wsl-6dc751ac1ff3)**
+
+![image](https://github.com/user-attachments/assets/42f0d14a-bf1e-4a04-bb5b-51107b2fa4c9)
+Postgres installed.
+
+### 4) Twenty's database localized!
+Just follow the commands inside WSL after you set Postgres-
+- `psql postgres -c "CREATE DATABASE \"default\";" -c "CREATE DATABASE test;" -c "CREATE USER twenty PASSWORD 'twenty';" -c "ALTER ROLE twenty superuser;"` (If you installed Postgres yourself)
+  or 
+- `docker run \
+    --name twenty_postgres \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_DB=default \
+    -v twenty_db_data:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    twentycrm/twenty-postgres:latest` (If you prefer going on with Docker)
+
+  I would just prefer going on with **Docker** as it makes the whole process a lot more efficient whilst reducing steps.
+  **Resource : [Official Docker guide to set it up on Ubuntu, is the same for WSL 2](https://docs.docker.com/engine/install/ubuntu/)**
+  > Pro tip: If docker is installed correctly, you may use this command to check with a demo pull!
+  > ![image](https://github.com/user-attachments/assets/7716767e-54e5-4053-8205-bc0544c8e35d)
+
+If you're confused about what we did with the above steps, in summary, the Twenty team did a great job setting us up a **snapshot** of the kind of Postgres database setup they would like their open-source contributors to have, the **snapshot** is all we're copying through Docker, in fact copying **snapshots** is mostly what Docker does.
+
+What setting up **Postgres** for **20** would look like on WSL 2 using Docker? 
+![image](https://github.com/user-attachments/assets/57143811-af6a-4b6b-be01-c13931aa6cf4)
+
+
+### 5) Setting up Redis (for Twenty, using Docker)
+
+  
