@@ -130,4 +130,54 @@ What setting up **Postgres** for **20** would look like on WSL 2 using Docker?
 
 ### 5) Setting up Redis (for Twenty, using Docker)
 
+Redis is a [caching database](https://en.wikipedia.org/wiki/Database_caching).
+
+Run
+- `docker run -d --name my-redis-stack -p 6379:6379 redis/redis-stack-server:latest` to pull the Redis image from twenty locally.
+![image](https://github.com/user-attachments/assets/5441d69e-9b7b-4f1d-ba15-77d017660d62)
+
+### 6) Environment Variables
+
+Environment variables here would contain some important strings- may it be keys, API endpoints, etc. They're mostly stored inside a common file, often named `.env`
+We'll also set our `.env` file so our app is fully functional.
+
+#### Steps to setup env vars:
+
+- `touch .env` on WSL/Linux would create a `.env` file
+- copy all the parameters you need for a complete environment from the `.env.example` file present at both the `twenty-front/` (for frontend) and `twenty-server` (for backend) directory. You can do this manually or just use the command - `cp ./packages/twenty-front/.env.example ./packages/twenty-front/.env &&
+cp ./packages/twenty-server/.env.example ./packages/twenty-server/.env` in a WSL/Linux machine.
+- On WSL, since you won't have direct control over your Linux terminal, you could simply replace `cp` with `cat` and then manually do the next step.
+- paste everything in `.env`
+
+or
+
+- `cat ./packages/twenty-front/.env.example ./packages/twenty-front/.env ./packages/twenty-server/.env.example ./packages/twenty-server/.env > .env`
+
+![image](https://github.com/user-attachments/assets/ebe16f47-120b-4b0d-9471-52a8fbbaedd3)
+
+### 7) Setting Dependencies
+
+Dependencies are basically what all packages this setup would require. Docker manages this all but since we're doing this whole setup manually, we would be using `nvm` or **Node Version Manager**.
+
+#### What does `nvm` do?
+It has the version of node (or more) that we've to use for our local setup in the `.nvmrc` file.
+Use these commands to setup Node to its correct version using the `.nvmrc` file.
+![image](https://github.com/user-attachments/assets/359a68f2-fc5f-4d15-8225-725b919d687f)
+
+Yarn is a package manager for node, run `yarn install` as the final step.
+
   
+### Run Application
+
+### Genius Bar (handling issues)
+
+
+#### Issue - ![image](https://github.com/user-attachments/assets/9efcd5a0-d42b-4c10-9f5d-da7954c41ed4)
+Try running `yarn install`
+![image](https://github.com/user-attachments/assets/b3cc4297-dba3-437f-8d9c-1ebaded8ca6b)
+![image](https://github.com/user-attachments/assets/78b734e9-affa-4548-a258-4d78ccad07e7)
+
+
+#### Issue - ![image](https://github.com/user-attachments/assets/e44b9b99-0b79-4cd2-b0d1-4d2711b864d4)
+
+
