@@ -6,6 +6,7 @@
 ## Useful URLs
 - Repo link: **https://github.com/twentyhq/twenty** (Contains code+some more docs)
 - For the official guide refer: **https://twenty.com/developers/local-setup** (Refer)
+- Self-hosting: **https://twenty.com/developers/section/self-hosting** (Refer)
 - Twenty Discord invites: **https://discord.com/invite/cx5n4Jzs57** (Ask queries related to setup here)
 - Twenty Demo: **https://demo.twenty.com/** (test out twenty's use-case in a crisp manner)
 
@@ -169,15 +170,29 @@ Yarn is a package manager for node, run `yarn install` as the final step.
   
 ### Run Application
 
-### Genius Bar (handling issues)
+- `npx nx database:reset twenty-server` ![image](https://github.com/user-attachments/assets/63a00de7-f4b7-4ff4-9fd5-621771704108)
+- `npx nx start twenty-server`
+- `npx nx start twenty-front`
+- and finally `npx nx start`
+
+Congratulations 🎉 Your **Twenty** setup is ready!
 
 
-#### Issue - ![image](https://github.com/user-attachments/assets/9efcd5a0-d42b-4c10-9f5d-da7954c41ed4)
+### FAQs (& handling issues)
+
+
+- #### Issue - ![image](https://github.com/user-attachments/assets/9efcd5a0-d42b-4c10-9f5d-da7954c41ed4)
 Try running `yarn install`
 ![image](https://github.com/user-attachments/assets/b3cc4297-dba3-437f-8d9c-1ebaded8ca6b)
 ![image](https://github.com/user-attachments/assets/78b734e9-affa-4548-a258-4d78ccad07e7)
 
+- #### Should I use `yarn` or `npm`?
 
-#### Issue - ![image](https://github.com/user-attachments/assets/e44b9b99-0b79-4cd2-b0d1-4d2711b864d4)
+Use `yarn`, using npm here means **re-inventing the wheel**. 
+
+- #### Can TwentyCRM see my setup?
+
+No. It's all on your personal machine
+
 
 
